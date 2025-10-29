@@ -21,9 +21,12 @@ const UserManagement = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
+  const [showEquipmentModal, setShowEquipmentModal] = useState(false);
   const [userForQR, setUserForQR] = useState(null);
   const [userToDelete, setUserToDelete] = useState(null);
+  const [userForEquipment, setUserForEquipment] = useState(null);
   const [editingUser, setEditingUser] = useState(null);
+  const [selectedEquipments, setSelectedEquipments] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -112,6 +115,49 @@ const UserManagement = () => {
   const closeQRModal = () => {
     setShowQRModal(false);
     setUserForQR(null);
+  };
+
+  // Carregar equipamentos do localStorage
+  const getEquipments = () => {
+    const saved = localStorage.getItem('equipments');
+    return saved ? JSON.parse(saved) : [];
+  };
+
+  const handleLinkEquipment = (user) => {
+    setUserForEquipment(user);
+    // Carregar equipamentos já vinculados ao cliente
+    const userEquipments = user.equipmentIds || [];
+    setSelectedEquipments(userEquipments);
+    setShowEquipmentModal(true);
+  };
+
+  const closeEquipmentModal = () => {
+    setShowEquipmentModal(false);
+    setUserForEquipment(null);
+    setSelectedEquipments([]);
+  };
+
+  const handleEquipmentToggle = (equipmentId) => {
+    setSelectedEquipments(prev => {
+      if (prev.includes(equipmentId)) {
+        return prev.filter(id => id !== equipmentId);
+      } else {
+        return [...prev, equipmentId];
+      }
+    });
+  };
+
+  const handleSaveEquipments = () => {
+    if (userForEquipment) {
+      const updatedUsers = users.map(u => 
+        u.id === userForEquipment.id 
+          ? { ...u, equipmentIds: selectedEquipments }
+          : u
+      );
+      setUsers(updatedUsers);
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
+      closeEquipmentModal();
+    }
   };
 
   // Geração de dados dos QR Codes por plano
@@ -289,6 +335,66 @@ const UserManagement = () => {
         </div>
       )}
 
+      {showEquipmentModal && (
+        <div className="form-modal" onClick={closeEquipmentModal}>
+          <div className="form-content" onClick={(e) => e.stopPropagation()}>
+            <h2>Vincular Equipamentos - {userForEquipment?.name}</h2>
+            <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+              Selecione os equipamentos que deseja vincular a este cliente:
+            </p>
+            <div className="equipment-selection">
+              {getEquipments().length === 0 ? (
+                <p style={{ color: '#999', textAlign: 'center', padding: '2rem' }}>
+                  Nenhum equipamento cadastrado. Cadastre equipamentos primeiro.
+                </p>
+              ) : (
+                getEquipments().map(equipment => {
+                  const isChecked = selectedEquipments.includes(equipment.id);
+                  return (
+                    <label 
+                      key={equipment.id} 
+                      className={`equipment-checkbox-label ${isChecked ? 'checked' : ''}`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => handleEquipmentToggle(equipment.id)}
+                      />
+                      <div className="equipment-checkbox-info">
+                        <div className="equipment-checkbox-name">{equipment.name}</div>
+                        <div className="equipment-checkbox-details">
+                          <span className="equipment-type">{equipment.type}</span>
+                          {equipment.description && (
+                            <span className="equipment-description">{equipment.description}</span>
+                          )}
+                        </div>
+                      </div>
+                    </label>
+                  );
+                })
+              )}
+            </div>
+            <div className="form-actions">
+              <button 
+                type="button" 
+                className="action-btn" 
+                onClick={handleSaveEquipments}
+                disabled={getEquipments().length === 0}
+              >
+                Salvar
+              </button>
+              <button 
+                type="button" 
+                className="action-btn cancel" 
+                onClick={closeEquipmentModal}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showDeleteModal && (
         <div className="form-modal" onClick={cancelDelete}>
           <div className="form-content" onClick={(e) => e.stopPropagation()}>
@@ -355,6 +461,13 @@ const UserManagement = () => {
                     onClick={() => handleViewQR(user)}
                   >
                     QR Code
+                  </button>
+                  <button 
+                    className="action-btn equipment" 
+                    onClick={() => handleLinkEquipment(user)}
+                    title="Vincular Equipamentos"
+                  >
+                    Equipamentos
                   </button>
                   <button 
                     className="action-btn delete" 
