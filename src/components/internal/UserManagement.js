@@ -222,10 +222,10 @@ const UserManagement = () => {
       </div>
 
       <div className="user-stats">
-        <div className="stat">
+        {/* <div className="stat">
           <span className="stat-label">Total de Clientes:</span>
           <span className="stat-value">{users.length}</span>
-        </div>
+        </div> */}
         <div className="stat">
           <span className="stat-label">Clientes Ativos:</span>
           <span className="stat-value">{users.filter(u => u.status === 'Ativo').length}</span>

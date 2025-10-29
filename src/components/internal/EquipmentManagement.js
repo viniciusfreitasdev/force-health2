@@ -125,12 +125,12 @@ const EquipmentManagement = () => {
         </div>
       </div>
 
-      <div className="equipment-stats">
+      {/* <div className="equipment-stats">
         <div className="stat">
           <span className="stat-label">Total de Equipamentos:</span>
           <span className="stat-value">{equipments.length}</span>
         </div>
-      </div>
+      </div> */}
 
       {showForm && (
         <div className="form-modal" onClick={handleCancel}>

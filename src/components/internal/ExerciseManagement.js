@@ -28,24 +28,33 @@ const ExerciseManagement = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const [exercises, setExercises] = useState([
-    { 
-      id: 1, 
-      name: 'Supino Reto', 
-      description: 'Exercício para peitoral, deltoides e tríceps',
-      muscleGroup: 'Peitoral',
-      equipmentId: 1,
-      equipmentName: 'Halteres'
-    },
-    { 
-      id: 2, 
-      name: 'Agachamento', 
-      description: 'Exercício para quadríceps, glúteos e posterior',
-      muscleGroup: 'Pernas',
-      equipmentId: 2,
-      equipmentName: 'Barra Reta'
-    },
-  ]);
+  // Carregar exercícios do localStorage ou usar dados padrão
+  const getInitialExercises = () => {
+    const saved = localStorage.getItem('exercises');
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return [
+      { 
+        id: 1, 
+        name: 'Supino Reto', 
+        description: 'Exercício para peitoral, deltoides e tríceps',
+        muscleGroup: 'Peitoral',
+        equipmentId: 1,
+        equipmentName: 'Halteres'
+      },
+      { 
+        id: 2, 
+        name: 'Agachamento', 
+        description: 'Exercício para quadríceps, glúteos e posterior',
+        muscleGroup: 'Pernas',
+        equipmentId: 2,
+        equipmentName: 'Barra Reta'
+      },
+    ];
+  };
+
+  const [exercises, setExercises] = useState(getInitialExercises);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [showForm, setShowForm] = useState(false);
@@ -75,9 +84,10 @@ const ExerciseManagement = () => {
     
     const selectedEquipment = availableEquipments.find(eq => eq.id === parseInt(formData.equipmentId));
     
+    let updatedExercises;
     if (editingExercise) {
       // Editar exercício existente
-      setExercises(exercises.map(ex => 
+      updatedExercises = exercises.map(ex => 
         ex.id === editingExercise.id 
           ? { 
               ...formData, 
@@ -86,7 +96,7 @@ const ExerciseManagement = () => {
               equipmentName: selectedEquipment ? selectedEquipment.name : ''
             }
           : ex
-      ));
+      );
     } else {
       // Criar novo exercício
       const newExercise = {
@@ -95,8 +105,12 @@ const ExerciseManagement = () => {
         equipmentId: parseInt(formData.equipmentId),
         equipmentName: selectedEquipment ? selectedEquipment.name : ''
       };
-      setExercises([...exercises, newExercise]);
+      updatedExercises = [...exercises, newExercise];
     }
+    
+    setExercises(updatedExercises);
+    // Salvar no localStorage
+    localStorage.setItem('exercises', JSON.stringify(updatedExercises));
 
     // Reset form
     setFormData({ name: '', description: '', muscleGroup: '', equipmentId: '' });
@@ -117,7 +131,10 @@ const ExerciseManagement = () => {
 
   const handleDelete = (id) => {
     if (window.confirm('Tem certeza que deseja excluir este exercício?')) {
-      setExercises(exercises.filter(ex => ex.id !== id));
+      const updatedExercises = exercises.filter(ex => ex.id !== id);
+      setExercises(updatedExercises);
+      // Salvar no localStorage
+      localStorage.setItem('exercises', JSON.stringify(updatedExercises));
     }
   };
 
@@ -147,7 +164,7 @@ const ExerciseManagement = () => {
         </div>
       </div>
 
-      <div className="exercise-stats">
+      {/* <div className="exercise-stats">
         <div className="stat">
           <span className="stat-label">Total de Exercícios:</span>
           <span className="stat-value">{exercises.length}</span>
@@ -158,7 +175,7 @@ const ExerciseManagement = () => {
             {new Set(exercises.map(ex => ex.muscleGroup)).size}
           </span>
         </div>
-      </div>
+      </div> */}
 
       {showForm && (
         <div className="form-modal" onClick={handleCancel}>
