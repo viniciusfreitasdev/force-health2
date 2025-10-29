@@ -5,7 +5,9 @@ import {
   Dashboard,
   UserManagement,
   WorkoutPlans,
-  Analytics
+  Analytics,
+  EquipmentManagement,
+  ExerciseManagement
 } from './components/internal';
 
 const InternalApp = () => {
@@ -21,6 +23,10 @@ const InternalApp = () => {
         return <WorkoutPlans />;
       case 'analytics':
         return <Analytics />;
+      case 'equipments':
+        return <EquipmentManagement />;
+      case 'exercises':
+        return <ExerciseManagement />;
       default:
         return <Dashboard />;
     }
@@ -51,11 +57,23 @@ const InternalApp = () => {
           >
             💪 Planos
           </button>
-          <button 
+          {/* <button 
             className={`nav-btn ${currentView === 'analytics' ? 'active' : ''}`}
             onClick={() => setCurrentView('analytics')}
           >
             📈 Analytics
+          </button> */}
+          <button 
+            className={`nav-btn ${currentView === 'equipments' ? 'active' : ''}`}
+            onClick={() => setCurrentView('equipments')}
+          >
+            🏋️ Equipamentos
+          </button>
+          <button 
+            className={`nav-btn ${currentView === 'exercises' ? 'active' : ''}`}
+            onClick={() => setCurrentView('exercises')}
+          >
+            💪 Exercícios
           </button>
         </div>
       </nav>
