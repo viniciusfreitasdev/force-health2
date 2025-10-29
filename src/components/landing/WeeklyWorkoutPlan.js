@@ -3,38 +3,38 @@ import React from 'react';
 const WeeklyWorkoutPlan = () => {
   const weeklyPlans = [
     {
-      title: "BARBELL FREE WEIGHTS WORKOUT",
-      description: "Build strength with compound movements",
-      level: "Beginners, Intermediate",
+      title: "TREINO COM HALTERES LIVRES",
+      description: "Desenvolva força com movimentos compostos",
+      level: "Iniciantes, Intermediário",
       image: "🏋️‍♂️"
     },
     {
-      title: "THE 300 WORKOUT",
-      description: "High-intensity military-style training",
-      level: "Advanced, Intermediate",
+      title: "TREINO DOS 300",
+      description: "Treinamento militar de alta intensidade",
+      level: "Avançado, Intermediário",
       image: "🪖"
     },
     {
-      title: "5 MIN TOTAL ABS WORKOUT",
-      description: "Quick core strengthening routine",
-      level: "Beginners",
+      title: "TREINO DE ABDOMINAIS 5 MIN",
+      description: "Rotina rápida de fortalecimento do core",
+      level: "Iniciantes",
       image: "💪"
     },
     {
-      title: "BODYWEIGHT STRENGTH WORKOUT",
-      description: "No equipment needed",
-      level: "Intermediate",
+      title: "TREINO DE FORÇA COM PESO CORPORAL",
+      description: "Sem necessidade de equipamentos",
+      level: "Intermediário",
       image: "🤸"
     }
   ];
 
   return (
     <section className="weekly-workout">
-      <div className="container">
-        <h2>WEEKLY WORKOUT PLAN</h2>
+      <div className="container" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
+        <h2>PLANO DE TREINO SEMANAL</h2>
         <p>
-          Discover comprehensive fitness plans designed by professional trainers. 
-          Each weekly program is carefully structured to maximize results while fitting into your busy schedule.
+          Descubra planos de fitness abrangentes desenvolvidos por treinadores profissionais. 
+          Cada programa semanal é cuidadosamente estruturado para maximizar resultados enquanto se adapta à sua agenda ocupada.
         </p>
         
         <div className="workout-cards">

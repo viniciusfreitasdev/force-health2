@@ -4,43 +4,43 @@ const HowToCreate = () => {
   return (
     <section className="how-to-create">
       <div className="container">
-        <h2>HOW TO CREATE A PERSONALIZED WORKOUT PLAN</h2>
+        <h2>CONHEÇA QUEM ESTÁ POR TRÁS DO FORCE HEALTH</h2>
         <div className="how-to-create-content">
           <p>
-            Creating the perfect workout plan starts with understanding your goals and current fitness level. 
-            Our intelligent system considers your preferences, available equipment, and time constraints to design 
-            a program that works specifically for you.
+            Olá! Meu nome é <strong>Gustavo</strong>, e sou o responsável pelo Sistema de Treinamento FORCE HEALTH. 
+            Antes de apresentar o sistema, deixe-me me apresentar para que você entenda melhor a experiência por trás desta metodologia.
           </p>
           
           <ul className="goals-list">
-            <li>Do you want to build muscle?</li>
-            <li>Are you looking to lose weight?</li>
-            <li>Do you want to become stronger?</li>
-            <li>Do you desire to increase your endurance?</li>
-            <li>Do you want to focus on a specific body part or muscle group?</li>
+            <li>31 anos de prática ininterrupta de musculação</li>
+            <li>+20 anos formado em Educação Física pela UNIUBE</li>
+            <li>18 anos como instrutor de musculação e personal trainer</li>
+            <li>16 anos coordenando academias</li>
+            <li>15 anos treinando atletas de fisiculturismo profissional</li>
           </ul>
           
           <p>
-            Whatever your fitness goals may be, having a structured plan is essential for success. 
-            Our workout planner helps you create a personalized program that adapts to your progress and keeps you motivated.
+            Toda essa experiência acumulada ao longo de décadas me permitiu desenvolver um sistema único e eficaz. 
+            O FORCE HEALTH não é apenas mais um método de treino - é o resultado de anos de estudo, prática e 
+            refinamento com atletas que buscam excelência no treinamento.
           </p>
           
           <div className="workout-types">
             <div className="workout-type">
+              <div className="workout-type-icon">🎓</div>
+              <h3>FORMAÇÃO</h3>
+            </div>
+            <div className="workout-type">
               <div className="workout-type-icon">💪</div>
-              <h3>BODY</h3>
+              <h3>EXPERIÊNCIA</h3>
             </div>
             <div className="workout-type">
-              <div className="workout-type-icon">🏃</div>
-              <h3>FITNESS</h3>
+              <div className="workout-type-icon">🏆</div>
+              <h3>ATLETAS</h3>
             </div>
             <div className="workout-type">
-              <div className="workout-type-icon">🚴</div>
-              <h3>CARDIO</h3>
-            </div>
-            <div className="workout-type">
-              <div className="workout-type-icon">🧘</div>
-              <h3>PILATES</h3>
+              <div className="workout-type-icon">⚡</div>
+              <h3>METODOLOGIA</h3>
             </div>
           </div>
         </div>

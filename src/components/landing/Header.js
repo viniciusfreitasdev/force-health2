@@ -1,27 +1,42 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ onNavigate }) => {
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('login');
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('home');
+    }
+  };
+
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <div className="logo-text">
-              FORCE HEALTH
-            </div>
-            <div className="logo-subtitle">
-              .COM
-            </div>
+            <img 
+              src="/self-icons/logo.jpg" 
+              alt="Force Health Logo" 
+              className="logo-img" 
+              onClick={handleLogoClick}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           
           <nav>
             <ul className="nav">
-              <li><a href="#home">HOME</a></li>
-              <li><a href="#calculators">CALCULATORS</a></li>
-              <li><a href="#exercises">EXERCISES LIST</a></li>
-              <li><a href="#workouts">SINGLE WORKOUTS</a></li>
-              <li><a href="#plans">WORKOUT PLANS</a></li>
-              <li><a href="#login">LOGIN/REGISTER</a></li>
+              {/* <li><a href="#home">INÍCIO</a></li> */}
+              {/* <li><a href="#calculators">CALCULADORAS</a></li> */}
+              <li><a href="#exercises">LISTA DE EXERCÍCIOS</a></li>
+              <li><a href="#workouts">TREINOS UNICOS</a></li>
+              <li><a href="#plans">PLANOS DE TREINO</a></li>
+              <li><a href="#login" onClick={handleLoginClick}>LOGIN/CADASTRO</a></li>
             </ul>
           </nav>
           

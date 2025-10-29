@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './components/landing/landing.css';
 import {
@@ -10,14 +10,33 @@ import {
   HowToCreate,
   FreeMonthlyPlan,
   WeeklyWorkoutPlan,
-  News,
-  Footer
+  Footer,
+  Login
 } from './components/landing';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+  };
+
+  if (currentPage === 'login') {
+    return (
+      <div className="App">
+        <Header onNavigate={handleNavigation} />
+        <Login onBackToHome={handleBackToHome} />
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <Header />
+      <Header onNavigate={handleNavigation} />
       <Hero />
       <StartForFree />
       <WhatIsWorkoutPlanner />
@@ -25,7 +44,7 @@ function App() {
       <HowToCreate />
       <FreeMonthlyPlan />
       <WeeklyWorkoutPlan />
-      <News />
+      {/* <News /> */}
       <Footer />
     </div>
   );

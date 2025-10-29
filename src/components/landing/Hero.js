@@ -6,26 +6,10 @@ const Hero = () => {
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
-            <h1>Welcome to Force Health</h1>
-            <h2>ONLINE WORKOUT PLANNER</h2>
-            
-            <div className="hero-features">
-              <div className="feature-icon">
-                <div>📝</div>
-                <div>BLOG</div>
-              </div>
-              <div className="feature-icon">
-                <div>⚖️</div>
-                <div>WEIGHT LOSS</div>
-              </div>
-              <div className="feature-icon">
-                <div>🍎</div>
-                <div>NUTRITION</div>
-              </div>
-            </div>
-            
-            <p className="cta-text">TO USE FITNESS PLANNER FOR FREE</p>
-            <button className="cta-button">Sign Up Now</button>
+            <h1>Sistema de Treinamento</h1>
+            <h2>Force Health</h2>
+            <p className='cta-text'>TREINAMENTO PROFISSIONAL PARA PESSOAS COMUNS</p>
+            <button className="cta-button">Saiba Mais</button>
           </div>
           
           <div className="hero-image">

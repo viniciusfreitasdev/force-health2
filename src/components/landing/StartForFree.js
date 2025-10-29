@@ -6,10 +6,12 @@ const StartForFree = () => {
       <div className="container">
         <div className="start-free-content">
           <div>
-            <h2>Start for Free</h2>
-            <p>This isn't your typical help desk or ticketing system - it's so much more.</p>
+            <h2>Saiba Mais</h2>
+            <p>Descubra como nosso sistema de treinamento pode transformar sua jornada fitness.</p>
           </div>
-          <div className="arrow-icon">→</div>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="arrow-icon">
+            →
+          </a>
         </div>
       </div>
     </section>

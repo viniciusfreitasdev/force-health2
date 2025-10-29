@@ -4,11 +4,11 @@ const CreateWorkout = () => {
   return (
     <section className="create-workout">
       <div className="container">
-        <h2>Create Your Workout And Share It With The World!</h2>
+        <h2>Pronto para Começar Seu Treino?</h2>
         <p>
-          Take complete control over your fitness journey. Design workouts with precise details including sets, reps, tempo, rest times, and progression strategies. Share your creations with the community and get inspired by others.
+          Transforme sua rotina de exercícios hoje mesmo. Acesse nossa plataforma e descubra como criar treinos personalizados que se adaptam perfeitamente aos seus objetivos de fitness.
         </p>
-        <button className="get-started-btn">GET STARTED</button>
+        <button className="get-started-btn">ACESSAR TREINAMENTO</button>
       </div>
     </section>
   );

@@ -9,3 +9,4 @@ export { default as FreeMonthlyPlan } from './FreeMonthlyPlan';
 export { default as WeeklyWorkoutPlan } from './WeeklyWorkoutPlan';
 export { default as News } from './News';
 export { default as Footer } from './Footer';
+export { default as Login } from './Login';
