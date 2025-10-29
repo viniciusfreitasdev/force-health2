@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import './components/landing/landing.css';
+import {
+  Header,
+  Hero,
+  StartForFree,
+  WhatIsWorkoutPlanner,
+  CreateWorkout,
+  HowToCreate,
+  FreeMonthlyPlan,
+  WeeklyWorkoutPlan,
+  News,
+  Footer
+} from './components/landing';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Hero />
+      <StartForFree />
+      <WhatIsWorkoutPlanner />
+      <CreateWorkout />
+      <HowToCreate />
+      <FreeMonthlyPlan />
+      <WeeklyWorkoutPlan />
+      <News />
+      <Footer />
     </div>
   );
 }
